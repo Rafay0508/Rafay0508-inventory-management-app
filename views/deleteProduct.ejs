@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Delete Product</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <h1>Delete Product</h1>
+    <p>
+      Are you sure you want to delete the product
+      <strong><%= product.name %></strong> (Barcode: <%= product.barcode %>)?
+    </p>
+
+    <form action="/deleteProduct/<%= product.barcode %>" method="POST">
+      <button type="submit">Delete</button>
+      <a href="/inventory">Cancel</a>
+    </form>
+  </body>
+</html>
