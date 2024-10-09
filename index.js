@@ -493,7 +493,7 @@ app.use(
     resave: false,
     saveUninitialized: true,
     cookie: { secure: false, maxAge: SESSION_DURATION }, // Set maxAge for the session cookie
-  }) 
+  })
 );
 
 // Set views and view engine
