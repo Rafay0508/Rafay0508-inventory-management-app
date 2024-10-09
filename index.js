@@ -5,10 +5,11 @@ const Product = require("./models/Product");
 const DailySale = require("./models/DailySale");
 const DailyPurchase = require("./models/DailyPurchase");
 const cors = require("cors");
-const PORT = 5000;
-app.use(cors());
 
 const app = express();
+const PORT = 5000;
+
+app.use(cors());
 
 // Middleware to parse form data
 app.use(express.urlencoded({ extended: true }));
