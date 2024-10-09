@@ -6,7 +6,8 @@ const Product = require("./models/Product");
 const DailySale = require("./models/DailySale");
 const DailyPurchase = require("./models/DailyPurchase");
 const User = require("./models/User");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
+
 const cors = require("cors");
 require("dotenv").config();
 
