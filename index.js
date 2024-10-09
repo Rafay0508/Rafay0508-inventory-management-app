@@ -4,6 +4,8 @@ const connectDB = require("./config/db");
 const Product = require("./models/Product");
 const DailySale = require("./models/DailySale");
 const DailyPurchase = require("./models/DailyPurchase");
+const cors = require("cors");
+app.use(cors());
 
 const app = express();
 
