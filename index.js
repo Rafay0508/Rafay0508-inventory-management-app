@@ -59,7 +59,7 @@ app.get("/inventory", async (req, res) => {
 
 // Add Product Page
 app.get("/addProduct", (req, res) => {
-  res.render("AddProduct");
+  res.render("addProduct");
 });
 
 // Handle Add Product Form Submission
