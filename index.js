@@ -95,7 +95,7 @@ app.get("/editProduct/:barcode", async (req, res) => {
       return res.status(404).send("Product not found");
     }
 
-    res.render("EditProduct", { product }); // Pass the product to the view
+    res.render("editProduct", { product }); // Pass the product to the view
   } catch (error) {
     console.error(error);
     res.status(500).send("Error fetching product.");
@@ -192,7 +192,7 @@ app.post("/add-Purchase", async (req, res) => {
 });
 
 app.get("/addSale", (req, res) => {
-  res.render("Addsale");
+  res.render("addSale");
 });
 // Get Product by Barcode
 app.get("/get-product/:barcode", async (req, res) => {
@@ -285,7 +285,7 @@ app.post("/addSale", async (req, res) => {
 
 // Add Purchase Page
 app.get("/addPurchase", (req, res) => {
-  res.render("AddPurchase");
+  res.render("addPurchase");
 });
 // Handle Add Purchase Form Submission
 app.post("/addPurchase", async (req, res) => {
@@ -364,6 +364,25 @@ app.get("/dailyPurchase", async (req, res) => {
     res.render("dailyPurchase", { purchases: purchase });
   } catch (error) {
     res.status(500).json({ message: error.message });
+  }
+});
+
+// Delete Product
+app.post("/deleteProduct/:barcode", async (req, res) => {
+  const barcode = req.params.barcode;
+
+  try {
+    const product = await Product.findOneAndDelete({ barcode });
+
+    if (!product) {
+      return res.status(404).send("Product not found");
+    }
+
+    console.log(`Product deleted: ${product.name}`);
+    res.redirect("/inventory"); // Redirect to the inventory page
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Error deleting product.");
   }
 });
 
