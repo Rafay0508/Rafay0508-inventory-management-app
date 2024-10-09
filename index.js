@@ -5,6 +5,7 @@ const Product = require("./models/Product");
 const DailySale = require("./models/DailySale");
 const DailyPurchase = require("./models/DailyPurchase");
 const cors = require("cors");
+const PORT = 5000;
 app.use(cors());
 
 const app = express();
@@ -366,6 +367,6 @@ app.get("/dailyPurchase", async (req, res) => {
 });
 
 // Start the server
-app.listen(5000, () => {
+app.listen(PORT, () => {
   console.log("Server started at http://localhost:5000");
 });
