@@ -6,12 +6,10 @@ WORKDIR /app
 
 # Copy the application files into the working directory
 COPY package*.json ./
+COPY . .  # This will copy all files, including index.js
 
 # Install the application dependencies
 RUN npm install
-
-# Copy the rest of the application files
-COPY . .
 
 EXPOSE 5000
 
