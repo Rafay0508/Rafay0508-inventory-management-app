@@ -116,6 +116,25 @@ app.get("/addProduct", (req, res) => {
 });
 
 // Handle Add Product Form Submission
+// app.post("/add-product", async (req, res) => {
+//   const newProduct = new Product({
+//     name: req.body.name,
+//     description: req.body.description,
+//     barcode: req.body.barcode,
+//     price: parseFloat(req.body.price),
+//     quantity: parseInt(req.body.quantity),
+//     category: req.body.category,
+//   });
+
+//   try {
+//     await newProduct.save(); // Save the new product to the database
+//     res.redirect("/inventory"); // Redirect to the inventory page
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).send("Error adding product.");
+//   }
+// });
+
 app.post("/add-product", async (req, res) => {
   const newProduct = new Product({
     name: req.body.name,
