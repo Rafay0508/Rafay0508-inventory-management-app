@@ -485,7 +485,7 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 
 // Middleware for session management
-const SESSION_DURATION = 1 * 60 * 1000; // 30 minutes
+const SESSION_DURATION = 30 * 60 * 1000; // 30 minutes
 
 app.use(
   session({
