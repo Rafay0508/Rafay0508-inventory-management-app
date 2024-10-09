@@ -12,9 +12,6 @@
     "ejs": "^3.1.10",
     "express": "^4.21.1",
     "mongoose": "^8.7.0",
-    "netlify-cli": "^17.36.4",
-    "netlify-lambda": "^2.0.16",
-    "nodemon": "^3.1.7",
-    "serverless-http": "^3.2.0"
+    "nodemon": "^3.1.7"
   }
 }
