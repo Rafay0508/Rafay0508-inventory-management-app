@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>View Inventory</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <style>
+    body {
+      font-family: "Arial", sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f4f8;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(to right, #007bff, #0056b3);
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+    .container {
+      margin: 20px;
+      padding: 20px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th,
+    td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background-color: #007bff;
+      color: white;
+    }
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+    .nav-button {
+      text-decoration: none;
+      background-color: #007bff;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 5px;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+    .nav-button:hover {
+      background-color: #0056b3;
+    }
+    .action-buttons {
+      display: flex;
+      gap: 10px;
+    }
+    .edit-button,
+    .delete-button {
+      padding: 6px 12px;
+      border-radius: 5px;
+      color: white;
+      text-decoration: none;
+    }
+    .edit-button {
+      background-color: #28a745; /* Green */
+    }
+    .delete-button {
+      background-color: #dc3545; /* Red */
+    }
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      padding: 15px 0;
+      background: linear-gradient(to right, #007bff, #0056b3);
+      color: white;
+    }
+  </style>
+  <body>
+    <header>
+      <h1>Inventory Management - View Inventory</h1>
+    </header>
+
+    <div class="container">
+      <!-- Home Button -->
+      <div><a href="/">Go Home</a></div>
+      <br />
+      <form
+        method="GET"
+        action="/inventory"
+        style="margin-bottom: 20px; display: flex; align-items: center"
+      >
+        <input
+          type="text"
+          name="search"
+          placeholder="Search by Barcode..."
+          style="
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #007bff;
+            border-radius: 5px;
+            margin-right: 10px;
+            font-size: 16px;
+          "
+        />
+        <button
+          type="submit"
+          class="nav-button"
+          style="padding: 10px 20px; font-size: 16px"
+        >
+          Search
+        </button>
+      </form>
+
+      <a class="nav-button" href="/addProduct">Add New Product</a>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Barcode</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Category</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% product_list.forEach(product => { %>
+          <tr>
+            <td><%= product.name %></td>
+            <td><%= product.description %></td>
+            <td><%= product.barcode %></td>
+            <td>$<%= product.price.toFixed(2) %></td>
+            <td><%= product.quantity %></td>
+            <td><%= product.category %></td>
+            <td class="action-buttons">
+              <a class="edit-button" href="/editProduct/<%= product.barcode %>"
+                >Edit</a
+              >
+              <a
+                class="delete-button"
+                href="/delete-product/<%= product.barcode %>"
+                >Delete</a
+              >
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+
+    <footer>
+      <p>&copy; 2024 Inventory Management System</p>
+    </footer>
+  </body>
+</html>
