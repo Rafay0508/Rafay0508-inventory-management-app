@@ -367,7 +367,25 @@ app.get("/dailyPurchase", async (req, res) => {
   }
 });
 
-// Delete Product
+// Get Product for Deletion Confirmation
+app.get("/deleteProduct/:barcode", async (req, res) => {
+  const barcode = req.params.barcode;
+
+  try {
+    const product = await Product.findOne({ barcode });
+
+    if (!product) {
+      return res.status(404).send("Product not found");
+    }
+
+    res.render("deleteProduct", { product }); // Pass the product to the view
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Error fetching product.");
+  }
+});
+
+// Handle Product Deletion
 app.post("/deleteProduct/:barcode", async (req, res) => {
   const barcode = req.params.barcode;
 
